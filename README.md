@@ -30,8 +30,8 @@ npm install
 npm run dev                   # uses .env.development -> http://localhost:8000/api
 ```
 
-Open http://localhost:5173, click **Staff login**, sign in with the superuser.
-Add staff accounts from http://localhost:8000/admin/ (Users).
+Open http://localhost:5173, click **Staff login**, and sign in with the superuser.
+Use **Staff Users** in the dashboard sidebar to create receptionist, accountant, or manager accounts.
 
 ## Tests
 

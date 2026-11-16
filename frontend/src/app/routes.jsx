@@ -17,6 +17,7 @@ import NewGuestPage from "../pages/Guests/NewGuestPage";
 import EditGuestPage from "../pages/Guests/EditGuestPage";
 import GuestDetailsPage from "../pages/Guests/GuestDetailsPage";
 import Payments from "../pages/Payments/Payments";
+import StaffUsersPage from "../pages/Users/StaffUsersPage";
 
 export const router = createBrowserRouter([
   // Public
@@ -44,6 +45,17 @@ export const router = createBrowserRouter([
           { path: "guests/:id/edit", element: <EditGuestPage /> },
           { path: "guests/:id", element: <GuestDetailsPage /> },
           { path: "payments", element: <Payments /> },
+        ],
+      },
+    ],
+  },
+  {
+    element: <ProtectedRoute requireSuperuser />,
+    children: [
+      {
+        element: <DashboardLayout />,
+        children: [
+          { path: "staff-users", element: <StaffUsersPage /> },
         ],
       },
     ],

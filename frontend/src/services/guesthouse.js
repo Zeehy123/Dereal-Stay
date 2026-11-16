@@ -170,3 +170,7 @@ export const dashboard = {
 export const auth = {
   login: async (username, password) => (await api.post("/auth/login/", { username, password })).data,
 };
+
+export const staffUsers = {
+  create: async (data) => (await api.post("/auth/users/", data)).data,
+};

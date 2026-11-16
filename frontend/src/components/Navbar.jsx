@@ -8,6 +8,7 @@ const TITLES = {
   rooms: "Rooms",
   guests: "Guests",
   payments: "Payments",
+  "staff-users": "Staff Users",
 };
 
 const Navbar = () => {
@@ -17,8 +18,18 @@ const Navbar = () => {
 
   const title = TITLES[pathname.split("/")[1]] || "Dashboard";
   const name = user?.full_name || user?.username || "";
-  const initials = name.split(" ").filter(Boolean).slice(0, 2).map((n) => n[0]).join("").toUpperCase();
-  const today = new Date().toLocaleDateString("en-NG", { weekday: "long", month: "long", day: "numeric" });
+  const initials = name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+  const today = new Date().toLocaleDateString("en-NG", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
 
   const handleLogout = () => {
     logout();

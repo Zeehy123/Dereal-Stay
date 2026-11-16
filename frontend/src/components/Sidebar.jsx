@@ -3,11 +3,13 @@ import {
   MdMeetingRoom,
   MdPeople,
   MdPayments,
+  MdManageAccounts,
 } from "react-icons/md";
 
 import { FaCalendarAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { BRAND_NAME } from "../config";
+import { useAuth } from "../context/AuthContext";
 const NAV_LINKS = [
   { to: "/dashboard", icon: MdDashboard, label: "Dashboard" },
   { to: "/reservations", icon: FaCalendarAlt, label: "Reservations" },
@@ -16,12 +18,17 @@ const NAV_LINKS = [
   { to: "/payments", icon: MdPayments, label: "Payments" },
 ];
 const Sidebar = () => {
+  const { user } = useAuth();
+  const navLinks = user?.is_superuser
+    ? [...NAV_LINKS, { to: "/staff-users", icon: MdManageAccounts, label: "Staff Users" }]
+    : NAV_LINKS;
+
   return (
     <div className="w-64 h-screen bg-[#1b1816] text-white flex flex-col fixed left-0 top-0 overflow-y-auto">
       <div className="p-6 text-2xl font-semibold">{BRAND_NAME}</div>
 
       <nav className="flex-1 px-4">
-        {NAV_LINKS.map(({ to, end, icon: Icon, label }) => (
+        {navLinks.map(({ to, end, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
